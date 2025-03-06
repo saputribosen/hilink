@@ -67,7 +67,7 @@ status_title.rawhtml = true
 -- Check if the service is running by checking /etc/rc.local
 local function is_service_running()
   local rc_path = "/etc/rc.local"
-  local script_line = "/usr/bin/hilink -r"
+  local script_line = "/usr/bin/elink -r"
   return fs.readfile(rc_path) and fs.readfile(rc_path):find(script_line, 1, true)
 end
 
@@ -90,7 +90,7 @@ update_status()
 -- Function for toggling the service
 function service_btn.write(self, section)
   local rc_path = "/etc/rc.local"
-  local script_line = "/usr/bin/hilink -r"
+  local script_line = "/usr/bin/elink -r"
 
   if is_service_running() then
     -- Stop the service
