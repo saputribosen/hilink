@@ -1,8 +1,8 @@
 local fs = require("nixio.fs")
 
-map = Map("hilink", "Huawei Configuration", "Configure Huawei router settings.")
+map = Map("hilink", "Hilink Configuration", "Configure Hilink Modem settings.")
 map.description = [[
-<p>This tool helps to configure settings for various Huawei modem types including Orbit, E5577, E3372, and E5573.</p>
+<p>This tool helps to configure settings for various Huawei modem types including Orbit, E5372, E5577, E3372, and E5573.</p>
 <br>
 <p>Tutorial this <a href="https://bit.ly/aryochannel" target="_blank">HERE</a></p>
 ]]
