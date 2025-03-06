@@ -1,13 +1,13 @@
 local fs = require("nixio.fs")
 
-map = Map("huawey", "Huawei Configuration", "Configure Huawei router settings.")
+map = Map("hilink", "Huawei Configuration", "Configure Huawei router settings.")
 map.description = [[
 <p>This tool helps to configure settings for various Huawei modem types including Orbit, E5577, E3372, and E5573.</p>
 <br>
 <p>Tutorial this <a href="https://bit.ly/aryochannel" target="_blank">HERE</a></p>
 ]]
 
-section = map:section(NamedSection, "settings", "huawey", "Settings")
+section = map:section(NamedSection, "settings", "hilink", "Settings")
 section.addremove = false
 section.anonymous = true
 
@@ -25,7 +25,7 @@ option.password = true
 option.default = "admin"
 option.placeholder = "Input Password your Modem"
 
-section = map:section(NamedSection, "settings", "huawey", "Telegram")
+section = map:section(NamedSection, "settings", "hilink", "Telegram")
 section.addremove = false
 section.anonymous = true
 
@@ -43,7 +43,7 @@ option.datatype = "integer"
 option.default = 0
 option.placeholder = "Message Thread ID Telegram"
 
-section = map:section(NamedSection, "settings", "huawey", "Duration")
+section = map:section(NamedSection, "settings", "hilink", "Duration")
 section.addremove = false
 section.anonymous = true
 
@@ -53,7 +53,7 @@ option.default = 5
 option.placeholder = "Enter Ping Duration in second"
 
 option = section:option(Value, "modem_path", "Modem Path")
-option.default = "/usr/bin/huawei.py"
+option.default = "/usr/bin/hilink.py"
 option.placeholder = "Path Script (/usr/bin/script.sh)"
 
 -- Add a button for starting/stopping the service
@@ -67,7 +67,7 @@ status_title.rawhtml = true
 -- Check if the service is running by checking /etc/rc.local
 local function is_service_running()
   local rc_path = "/etc/rc.local"
-  local script_line = "/usr/bin/huawei -r"
+  local script_line = "/usr/bin/hilink -r"
   return fs.readfile(rc_path) and fs.readfile(rc_path):find(script_line, 1, true)
 end
 
@@ -90,11 +90,11 @@ update_status()
 -- Function for toggling the service
 function service_btn.write(self, section)
   local rc_path = "/etc/rc.local"
-  local script_line = "/usr/bin/huawei -r"
+  local script_line = "/usr/bin/hilink -r"
 
   if is_service_running() then
     -- Stop the service
-    luci.sys.call("huawei -s >/dev/null 2>&1")
+    luci.sys.call("hilink -s >/dev/null 2>&1")
 
     -- Remove the script from /etc/rc.local
     local rc_content = fs.readfile(rc_path)
@@ -104,7 +104,7 @@ function service_btn.write(self, section)
     end
   else
     -- Start the service
-    luci.sys.call("huawei -r >/dev/null 2>&1 &")
+    luci.sys.call("hilink -r >/dev/null 2>&1 &")
 
     -- Add the script to /etc/rc.local if not already present
     if not fs.readfile(rc_path):find(script_line, 1, true) then
