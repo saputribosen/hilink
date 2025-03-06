@@ -1,6 +1,6 @@
 #!/bin/bash
 # GPIO Founder Lutfa Ilham
-# Internet Monitor for Huawei
+# Internet Monitor for Hilink
 # by Aryo Brokolly (youtube)
 # 1.1 - Dengan Logging
 
