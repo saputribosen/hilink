@@ -4,7 +4,7 @@
 # by Aryo Brokolly (youtube)
 # 1.1 - Dengan Logging
 
-LOG_FILE="/var/log/huawei_monitor.log"
+LOG_FILE="/var/log/hilink_monitor.log"
 log() {
   echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" | tee -a "$LOG_FILE"
 }
@@ -14,8 +14,8 @@ if [ "$(id -u)" != "0" ]; then
   exit 1
 fi
 
-SERVICE_NAME="Huawei Monitor"
-CONFIG_FILE="/etc/config/huawey"
+SERVICE_NAME="Hilink Monitor"
+CONFIG_FILE="/etc/config/hilink"
 DEFAULT_CHECK_INTERVAL=1
 
 if [ -f "$CONFIG_FILE" ]; then
@@ -55,12 +55,12 @@ function loop() {
 
 function start() {
   log "Starting ${SERVICE_NAME} service ..."
-  screen -AmdS huawei-monitor "${0}" -l
+  screen -AmdS hilink-monitor "${0}" -l
 }
 
 function stop() {
   log "Stopping ${SERVICE_NAME} service ..."
-  kill $(screen -list | grep huawei-monitor | awk -F '[.]' {'print $1'}) 2>/dev/null || log "Service not running"
+  kill $(screen -list | grep hilink-monitor | awk -F '[.]' {'print $1'}) 2>/dev/null || log "Service not running"
 }
 
 function usage() {
