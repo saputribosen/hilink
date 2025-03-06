@@ -43,8 +43,8 @@ function loop() {
     fi
 
     if [ "$lan_off_timer" -ge "$LAN_OFF_DURATION" ]; then
-      log "LAN off selama $LAN_OFF_DURATION detik, menjalankan $MODEM_PATH ..."
-      $MODEM_PATH &>> "$LOG_FILE"
+      log "LAN off selama $LAN_OFF_DURATION detik, IP Modem akan berganti ..."
+      hilink iphunter &>> "$LOG_FILE"
       lan_off_timer=0 
     fi
 
