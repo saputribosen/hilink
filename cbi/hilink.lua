@@ -52,10 +52,6 @@ option.datatype = "uinteger"
 option.default = 5
 option.placeholder = "Enter Ping Duration in second"
 
-option = section:option(Value, "modem_path", "Modem Path")
-option.default = "/usr/bin/hilink.py"
-option.placeholder = "Path Script (/usr/bin/script.sh)"
-
 -- Add a button for starting/stopping the service
 service_btn = section:option(Button, "_service", "Control Services")
 service_btn.inputstyle = "apply"
