@@ -90,7 +90,7 @@ function service_btn.write(self, section)
 
   if is_service_running() then
     -- Stop the service
-    luci.sys.call("hilink -s >/dev/null 2>&1")
+    luci.sys.call("elink -s >/dev/null 2>&1")
 
     -- Remove the script from /etc/rc.local
     local rc_content = fs.readfile(rc_path)
@@ -100,7 +100,7 @@ function service_btn.write(self, section)
     end
   else
     -- Start the service
-    luci.sys.call("hilink -r >/dev/null 2>&1 &")
+    luci.sys.call("elink -r >/dev/null 2>&1 &")
 
     -- Add the script to /etc/rc.local if not already present
     if not fs.readfile(rc_path):find(script_line, 1, true) then
